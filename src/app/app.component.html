@@ -1,20 +1,56 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+  <div class="search-page">
+      <div class="row">
+        <h3 class="search-header">Параметры поиска</h3>
+      </div>
+      <hr>
+      <div class="row search-row" *ngFor="let pair of inputArray; let i = index">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+              <label for="input-key">Ключ:</label>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
+              <input type="text" id="input-key" [(ngModel)]="inputArray[i].key">
+            </div>
+        </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+              <label for="input-value">Значение:</label>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
+              <input type="text" id="input-value" [(ngModel)]="inputArray[i].value">
+            </div>
+          </div>
+      </div>
+      <div class="row add-button-row">
+        <button type="submit" class="btn btn-link" (click)="addInputPair()">Добавить ключ/значение</button>
+      </div>
+    <div class="row search-button-row">
+        <button type="submit" class="btn btn-primary" (click)="search()">Поиск</button>
+    </div>
+  </div>
+  <div class="result-page">
+    <h3 class="result-header">Найденные объекты:</h3>
+    <div class="result-collection" *ngIf="resultArray.length != 0; else noObjectsWarning">
+      <div class="result-object" *ngFor="let object of resultArray">
+          <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+            <table class="table">
+              <thead>
+              <th>Key</th>
+              <th>Value</th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let pair of object.pairs">
+                <td>{{pair.key}}</td>
+                <td>{{pair.value}}</td>
+              </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+    <ng-template #noObjectsWarning>
+      <h3>Нет результатов поиска</h3>
+    </ng-template>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-

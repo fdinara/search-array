@@ -1,0 +1,31 @@
+.search-page, .result-page {
+  padding: 1em 1em 1em 1em;
+  border: 1px dotted gray;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: whitesmoke;
+}
+.search-header, .result-header {
+  text-align: center;
+}
+.search-row {
+  margin-bottom: 0.5em;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#input-key, #input-value {
+  width: 100%;
+}
+.result-object {
+  padding: 1em 1em 1em 1em;
+}
+.add-button-row {
+  margin-left: 1em;
+}
+.search-button-row {
+  float: right;
+  margin-right: 1em;
+}
+.result-object {
+  display: inline-block;
+}
